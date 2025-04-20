@@ -22,7 +22,7 @@
         border-radius: 1rem;
         gap: 1rem;
         width: 25vw;
-        height: 30vh;
+        height: 38vh;
       }
       input {
         background-color: black;
@@ -60,22 +60,31 @@
       </div>
       <input type="text" placeholder="Enter your note" />
       <button>Add Todo</button>
+      <button class="Clear" style="background-color: red">Clear Todo</button>
     </div>
     <script>
-      let todos = [];
+      let noteDisplay = document.querySelector(".note-display");
+      let clear = document.querySelector(".Clear");
+      let note = JSON.parse(localStorage.getItem("note"));
+      if (!note) {
+        noteDisplay.innerHTML = "<small>No notes available</small>";
+      } else {
+        noteDisplay.innerHTML = note.note;
+      }
       let addBtn = document.querySelector("button");
       addBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        let noteDisplay = document.querySelector(".note-display").innerText;
-        if (localStorage.getItem("note")) {
-          let note = localStorage.getItem("note");
-          if (note) {
-            document.querySelector(".note-display").innerText =
-              document.querySelector(".note-display").innerText + note;
-          }
-        } else {
-          localStorage.setItem("note", document.querySelector("input").value);
-        }
+        let userNote = document.querySelector("input").value;
+        let todos = {
+          note: userNote,
+          timeStamp: Date.now(),
+        };
+        localStorage.setItem("note", JSON.stringify(todos));
+        noteDisplay.innerHTML = userNote;
+      });
+      clear.addEventListener("click", () => {
+        localStorage.clear();
+        window.location.reload();
       });
     </script>
   </body>

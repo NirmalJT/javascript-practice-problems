@@ -1,2 +1,40 @@
-14. The Window Scroller:
-    You are developing a single-page application with a smooth scrolling effect. Implement a function named smoothScrollToTop that smoothly scrolls the window to the top when called.
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      section {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+      button {
+        cursor: pointer;
+        padding: 10px 20px;
+        border: none;
+        background-color: rgb(87, 87, 242);
+        border-radius: 5px;
+        margin: 3rem;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="1">Hello 1</section>
+    <section class="1">hello 2</section>
+    <section class="1">hello 3</section>
+    <section class="1">hello 4</section>
+    <section class="1">
+      hello 5
+      <button onclick="smoothScrollToTop()">Top</button>
+    </section>
+    <script src="./14-window-scroller.js"></script>
+  </body>
+</html>
